@@ -1,0 +1,13 @@
+package com.library.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.library.model.Penerbit;
+
+public interface PenerbitRepository extends JpaRepository<Penerbit, Integer> {
+    @Query("SELECT an from Penerbit an WHERE an.name LIKE %:name%")
+    public List<Penerbit> findByName(String name);
+}
